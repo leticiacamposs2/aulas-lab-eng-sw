@@ -7,9 +7,8 @@ public class TesteArquivoLeitura {
 		try {
 			FileReader fr = new FileReader(f);
 			int i = 0;
-			while(i != -1) {
-				i = fr.read();
-				System.out.println("Lido Caracter: " + (char)i);
+			while((i = fr.read())!= -1) {				
+				System.out.print((char)i);
 			}
 			fr.close();
 		} catch (Exception e) {
