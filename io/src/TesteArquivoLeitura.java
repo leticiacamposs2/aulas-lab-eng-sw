@@ -6,13 +6,11 @@ public class TesteArquivoLeitura {
 		File f = new File("C:/Temp/teste.txt");
 		try {
 			FileReader fr = new FileReader(f);
-			int i = fr.read();
-			System.out.println("Leitura do Caracter: " + (char)i);
-			i = fr.read();
-			System.out.println("Leitura do Caracter: " + (char)i);
-			i = fr.read();
-			System.out.println("Leitura do Caracter: " + (char)i);
-			i = fr.read();
+			int i = 0;
+			while(i != -1) {
+				i = fr.read();
+				System.out.println("Lido Caracter: " + (char)i);
+			}
 			fr.close();
 		} catch (Exception e) {
 			e.printStackTrace();
