@@ -1,6 +1,7 @@
 package servlets;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 
 import javax.servlet.Servlet;
 import javax.servlet.ServletConfig;
@@ -12,7 +13,7 @@ import javax.servlet.annotation.WebServlet;
 @WebServlet("/MeuServlet") //toda que vez que for acionada essa URL o servlet sera executado
 public class MeuServlet implements Servlet {
 	private ServletConfig config;
-	
+	private int x;
 	@Override
 	public void destroy() {
 		
@@ -35,8 +36,17 @@ public class MeuServlet implements Servlet {
 	}
 
 	@Override
-	public void service(ServletRequest arg0, ServletResponse arg1) throws ServletException, IOException {
+	public void service(ServletRequest req, ServletResponse res) throws ServletException, IOException {
+		String n = req.getParameter("NOMEALUNO");
+		System.out.println("Parametro recebido NOMEALUNO="+n);
+
+		String numero = req.getParameter("TABUADA");
+		System.out.println("Parametro recebido TABUADA="+numero);
 		System.out.println("Servlet sendo executado");
+			
+		PrintWriter out = res.getWriter(); //Com essa inf o que passar aqui o nav mostra na tela
+		out.write("<h1>Olá " + n + " como vai você?</h1>");
+		out.flush();		
 	}
 
 }
